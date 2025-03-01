@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantShop - Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Leafy Delights.</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Store</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <input type="text" placeholder="Search" class="search-bar">
+                <button class="search-btn">Search</button>
+                <button class="cart-btn">Cart <span>🛒</span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-section">
+            <h3>Your Cart</h3>
+            <div class="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="cart-total">
+                <p>Total: ₹<span id="cart-total">0.00</span></p>
+            </div>
+            <div class="cart-actions">
+                <button class="clear-cart-btn">Clear Cart</button>
+                <a href="index.html" class="continue-shopping-btn">Continue Shopping</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="about-section">
+                <h3>About PlantShop</h3>
+                <p>Welcome to PlantShop, your premier destination for bringing nature indoors since 2020. We specialize in house plants, office plants, garden plants, bonsais, orchids, and accessories, enhancing living spaces with greenery and promoting a healthier lifestyle.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>Gift Center</h4>
+                    <p>Explore curated gift options for plant lovers. Perfect for any occasion!</p>
+                    <a href="#gift-center" class="footer-link">Learn More</a>
+                </div>
+                <div class="link-column">
+                    <h4>FAQ</h4>
+                    <p>Find answers to common questions about plants and our services.</p>
+                    <a href="#faq" class="footer-link">Visit FAQ</a>
+                </div>
+                <div class="link-column">
+                    <h4>Terms of Use</h4>
+                    <p>Review our terms and conditions for using PlantShop’s services.</p>
+                    <a href="#terms" class="footer-link">Read Terms</a>
+                </div>
+                <div class="link-column">
+                    <h4>Privacy</h4>
+                    <p>Learn how we protect your personal information and privacy.</p>
+                    <a href="#privacy" class="footer-link">View Policy</a>
+                </div>
+                <div class="link-column">
+                    <h4>Buying Guides</h4>
+                    <p>Get tips on choosing and caring for the perfect plants.</p>
+                    <a href="#buying-guides" class="footer-link">Explore Guides</a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/plantshop" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/476/small_2x/facebook-logo-facebook-icon-transparent-free-png.png" height="30px" width="30px" alt="Facebook" class="social-logo"><br>Facebook
+                </a>
+                <a href="https://www.instagram.com/plantshop" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/415/non_2x/instagram-logo-instagram-icon-transparent-free-png.png" height="30px" width="30px" alt="Instagram" class="social-logo"><br>Instagram
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cart-script.js"></script>
+    <button class="back-to-top">↑</button> <!-- Add Back to Top button -->
+</body>
+</html>
