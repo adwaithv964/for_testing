@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    
+
     // Fetch products
     async function fetchProducts() {
         try {

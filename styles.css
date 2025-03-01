@@ -744,34 +744,34 @@ body {
 
 /* Responsive Design for Mobile (max-width: 768px) */
 @media (max-width: 768px) {
-    /* Navbar (Modern Hamburger Menu) */
+    /* Navbar (Modern Hamburger Menu with Pop-up Search) */
     .navbar {
-        flex-direction: column; /* Stack elements vertically for mobile */
-        padding: 10px 15px; /* Increased padding for touch targets */
-        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 80%, #C8E6C9 100%); /* Diagonal gradient for modern look */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
-        position: relative; /* For hamburger positioning */
-        height: 60px; /* Fixed height for consistency */
+        flex-direction: column;
+        padding: 10px 15px;
+        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 80%, #C8E6C9 100%);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        height: 60px;
         align-items: center;
     }
 
     .logo {
-        display: block; /* Show logo on mobile */
-        font-size: 24px; /* Larger, bold logo */
-        font-weight: 800; /* Bolder weight for emphasis */
+        display: block;
+        font-size: 24px;
+        font-weight: 800;
         color: #fff;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for readability */
-        transition: transform 0.3s ease, color 0.3s ease; /* Animation for logo */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .logo:hover {
-        transform: scale(1.1); /* Slight scale on hover/tap */
-        color: #F5F5DC; /* Light beige on hover */
+        transform: scale(1.1);
+        color: #F5F5DC;
     }
 
     /* Hamburger Menu Icon (Toggle) */
     .hamburger {
-        display: block; /* Show hamburger icon */
+        display: block;
         position: absolute;
         left: 15px;
         top: 15px;
@@ -781,7 +781,7 @@ body {
         border: none;
         color: #fff;
         font-size: 24px;
-        z-index: 1001; /* Above navigation */
+        z-index: 1001;
     }
 
     .hamburger::before {
@@ -790,21 +790,21 @@ body {
     }
 
     .nav-links {
-        display: none; /* Hidden by default, shown on hamburger click */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
         top: 60px;
         left: 0;
-        background: rgba(76, 175, 80, 0.95); /* Semi-transparent green */
+        background: rgba(76, 175, 80, 0.95);
         padding: 20px 0;
         border-radius: 0 0 10px 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        animation: slideDown 0.3s ease-in-out; /* Animation for menu slide */
+        animation: slideDown 0.3s ease-in-out;
     }
 
     .nav-links.active {
-        display: flex; /* Show when active */
+        display: flex;
     }
 
     .nav-links li {
@@ -813,8 +813,8 @@ body {
     }
 
     .nav-links a {
-        font-size: 16px; /* Slightly larger for touch */
-        padding: 10px 20px; /* Larger touch area */
+        font-size: 16px;
+        padding: 10px 20px;
         color: #fff;
         text-decoration: none;
         transition: color 0.3s ease, background-color 0.3s ease;
@@ -822,29 +822,31 @@ body {
 
     .nav-links a:hover {
         color: #F5F5DC;
-        background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
-    /* Search and Cart (Right Side) - Modern Icons */
+    /* Navigation Links Updated for Requested Items */
+    .nav-links li:nth-child(1) a { content: "Store"; } /* Updated from "Store" */
+    .nav-links li:nth-child(2) a { content: "About"; } /* Updated from "About" */
+    .nav-links li:nth-child(3) a { content: "Service"; } /* New: Service */
+    .nav-links li:nth-child(4) a { content: "Contacts"; } /* Updated from "Contact" */
+
+    /* Search Pop-up and Cart Icon */
     .nav-right {
         flex-direction: row;
         gap: 10px;
-        margin-top: 10px; /* Space below hamburger/logo */
+        margin-top: 10px;
     }
 
-    .search-bar {
-        display: none; /* Hide text input for mobile, use icon instead */
-    }
-
-    .search-btn {
-        display: none; /* Hide button for mobile, use icon instead */
+    .search-bar, .search-btn {
+        display: none; /* Hide default search bar and button for pop-up */
     }
 
     .search-icon, .cart-icon {
-        display: block; /* Show icons instead of text input/button */
+        display: block;
         background: none;
         border: none;
-        font-size: 24px; /* Larger icons for touch */
+        font-size: 24px;
         color: #fff;
         cursor: pointer;
         padding: 8px;
@@ -852,7 +854,7 @@ body {
     }
 
     .search-icon:hover, .cart-icon:hover {
-        transform: scale(1.2); /* Scale on hover/tap */
+        transform: scale(1.2);
         color: #F5F5DC;
     }
 
@@ -864,50 +866,120 @@ body {
         content: '🔍'; /* Search magnifying glass emoji */
     }
 
-    /* JavaScript will toggle the nav-links with the hamburger */
+    /* Pop-up Search Bar */
+    .search-popup {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(76, 175, 80, 0.95);
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        animation: slideDown 0.3s ease-in-out;
+    }
+
+    .search-popup.active {
+        display: block;
+    }
+
+    .search-popup input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #fff;
+        border-radius: 25px;
+        font-size: 16px;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #333;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-popup input:focus {
+        outline: none;
+        border-color: #8BC34A;
+    }
+
+    .search-popup button {
+        display: none; /* Hide button in pop-up, use Enter key or icon close */
+    }
+
+    /* Close Button for Search Pop-up */
+    .search-popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .search-popup-close:hover {
+        color: #F5F5DC;
+    }
+
+    /* JavaScript for Search Pop-up and Hamburger */
     /* Add this script at the end of script.js or in a new script tag in index.html */
     /* script.js or new script tag:
     document.addEventListener('DOMContentLoaded', () => {
         const hamburger = document.createElement('button');
         hamburger.classList.add('hamburger');
         document.querySelector('.navbar').insertBefore(hamburger, document.querySelector('.nav-links'));
-        
+
+        const searchIcon = document.querySelector('.search-icon');
+        const cartIcon = document.querySelector('.cart-icon');
+        const searchPopup = document.createElement('div');
+        searchPopup.classList.add('search-popup');
+        searchPopup.innerHTML = `
+            <input type="text" placeholder="Search" class="search-bar">
+            <button class="search-popup-close">✕</button>
+        `;
+        document.body.appendChild(searchPopup);
+
         hamburger.addEventListener('click', () => {
             document.querySelector('.nav-links').classList.toggle('active');
-            hamburger.classList.toggle('open'); // Optional: rotate animation for hamburger
+            hamburger.classList.toggle('open');
         });
 
-        // Replace search-bar and search-btn with search-icon
-        const searchBar = document.querySelector('.search-bar');
-        const searchBtn = document.querySelector('.search-btn');
-        const searchIcon = document.createElement('button');
-        searchIcon.classList.add('search-icon');
-        searchBar.parentNode.replaceChild(searchIcon, searchBar);
-        searchBtn.style.display = 'none'; // Ensure button is hidden
+        searchIcon.addEventListener('click', () => {
+            searchPopup.classList.toggle('active');
+        });
+
+        document.querySelector('.search-popup-close').addEventListener('click', () => {
+            searchPopup.classList.remove('active');
+        });
+
+        // Cart icon click (navigate to cart.html or show cart popup if desired)
+        cartIcon.addEventListener('click', () => {
+            window.location.href = 'cart.html'; // Or implement a pop-up
+        });
     });
     */
 
-    /* Footer (Compact Accordion Style) */
+    /* Footer (Compact Accordion Style with Updated Sections) */
     .footer-content {
         flex-direction: column;
         padding: 15px;
         text-align: center;
-        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 80%, #C8E6C9 100%); /* Matching header gradient */
-        border-radius: 10px 10px 0 0; /* Rounded top corners for modern look */
+        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 80%, #C8E6C9 100%);
+        border-radius: 10px 10px 0 0;
     }
 
     .about-section, .footer-links, .social-links {
         width: 100%;
         margin: 10px 0;
         padding: 15px;
-        background: rgba(255, 255, 255, 0.1); /* Subtle white overlay for contrast */
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .about-section:hover, .footer-links:hover, .social-links:hover {
-        transform: scale(1.05); /* Slight scale on hover/tap */
+        transform: scale(1.05);
         opacity: 0.9;
     }
 
@@ -915,12 +987,12 @@ body {
         font-size: 16px;
         margin-bottom: 10px;
         color: #fff;
-        text-transform: uppercase; /* Modern, bold look */
+        text-transform: uppercase;
         letter-spacing: 1px;
     }
 
     .about-section p, .link-column p, .footer-link {
-        display: none; /* Hide detailed text by default */
+        display: none;
     }
 
     /* Accordion Toggle (Using + for expand/collapse) */
@@ -934,13 +1006,13 @@ body {
     }
 
     .footer-toggle::after {
-        content: ' +'; /* Plus sign for expand */
+        content: ' +';
         font-size: 18px;
         margin-left: 5px;
     }
 
     .footer-toggle.active::after {
-        content: ' -'; /* Minus sign for collapse */
+        content: ' -';
     }
 
     .footer-content > div {
@@ -950,8 +1022,22 @@ body {
     }
 
     .footer-content > div.active {
-        max-height: 200px; /* Adjust based on content */
+        max-height: 200px;
     }
+
+    /* Updated Footer Sections */
+    .about-section h3 { content: "About PlantShop"; }
+    .footer-links {
+        display: grid;
+        grid-template-rows: repeat(4, auto); /* Four sections: Gift Center, Service, Contacts, Buying Guides */
+        gap: 10px;
+    }
+
+    .link-column:nth-child(1) h4 { content: "Gift Center"; } /* Updated from "Gift Center" */
+    .link-column:nth-child(2) h4 { content: "Service"; } /* New: Service (replacing FAQ) */
+    .link-column:nth-child(3) h4 { content: "Contacts"; } /* New: Contacts (combining Terms and Privacy) */
+    .link-column:nth-child(4) h4 { content: "Buying Guides"; } /* Updated from "Buying Guides" */
+    .link-column:nth-child(5) { display: none; } /* Hide extra column if present */
 
     /* Social Links (Icons Only) */
     .social-links {
@@ -969,18 +1055,17 @@ body {
     }
 
     .social-logo {
-        height: 30px; /* Larger icons for mobile */
+        height: 30px;
         width: auto;
         transition: transform 0.3s ease;
     }
 
     .social-logo:hover {
-        transform: scale(1.2); /* Scale on hover/tap */
+        transform: scale(1.2);
     }
 
-    /* Ensure text labels are hidden for social links on mobile */
     .social-links a br + * {
-        display: none; /* Hide "Facebook" and "Instagram" text */
+        display: none;
     }
 
     /* Animation for Menu Slide */
