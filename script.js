@@ -26,12 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>${product.name || 'Unnamed Product'}</p>
                 <p class="price">₹${product.price || '0.00'}</p>
                 <button class="view-btn" data-product-id="${product.id || ''}">View</button>
-                <button class="add-to-cart-btn">Add to Cart</button>
             </div>
         `).join('');
-        // Add click handlers to View and Add to Cart buttons after rendering
+        // Add click handlers to View buttons after rendering
         addViewButtonHandlers();
-        addAddToCartButtonHandlers();
     }
 
     // Handle navigation links in the header
@@ -48,23 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert(`Section ${sectionId} not found. Coming soon!`);
                 }
             });
-        });
-    }
-
-    // Handle hamburger menu toggle
-    function setupHamburgerMenu() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
         });
     }
 
@@ -145,50 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle View buttons for products (open modal with product details)
+    // Handle View buttons for products (add to cart)
     function addViewButtonHandlers() {
         const viewButtons = document.querySelectorAll('.view-btn');
         viewButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const productItem = e.target.closest('.product-item');
-                const product = JSON.parse(productItem.getAttribute('data-product'));
-                showProductModal(product);
-            });
-        });
-    }
-
-    // Show product details in a modal
-    function showProductModal(product) {
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
-        modal.innerHTML = `
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <img src="${product.image_url}" alt="${product.name}" style="width: 100%; max-height: 300px; object-fit: cover;">
-                <h2>${product.name}</h2>
-                <p>Price: ₹${product.price}</p>
-                <p>Category: ${product.category || 'N/A'}</p>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        const closeBtn = modal.querySelector('.close-btn');
-        closeBtn.addEventListener('click', () => {
-            document.body.removeChild(modal);
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                document.body.removeChild(modal);
-            }
-        });
-    }
-
-    // Handle Add to Cart buttons
-    function addAddToCartButtonHandlers() {
-        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-        addToCartButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 const productItem = e.target.closest('.product-item');
                 const product = JSON.parse(productItem.getAttribute('data-product'));
@@ -234,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSearchBar();
     setupCartButton();
     setupShopNowButton();
-    setupHamburgerMenu();
 
     // Handle Back to Top button functionality
     function setupBackToTop() {
@@ -246,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Show/hide button based on scroll position
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 300) { // Show button after scrolling 300px down
                 backToTopBtn.classList.add('visible');
             } else {
                 backToTopBtn.classList.remove('visible');
@@ -262,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    setupBackToTop();
+    setupBackToTop(); // Initialize the Back to Top button
 
     // Existing slideshow code (unchanged)
     const slides = document.querySelectorAll('.slide');
@@ -310,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to go to the previous slide
-    function prevSlide() {
+    function prevSlide() {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(currentSlide);
         resetInterval();
