@@ -740,8 +740,6 @@ body {
     }
 }
 
-/* Existing styles remain unchanged above this point */
-
 /* Responsive Design for Mobile (max-width: 768px) */
 @media (max-width: 768px) {
     /* Navbar (Modern Hamburger Menu with Pop-up Search) */
@@ -782,11 +780,17 @@ body {
         color: #fff;
         font-size: 24px;
         z-index: 1001;
+        outline: none; /* Remove outline for touch devices */
+        -webkit-tap-highlight-color: transparent; /* Improve touch feedback */
     }
 
     .hamburger::before {
         content: '\2630'; /* Hamburger icon (☰) */
         transition: transform 0.3s ease;
+    }
+
+    .hamburger.open::before {
+        transform: rotate(90deg); /* Optional: Rotate on click for visual feedback */
     }
 
     .nav-links {
@@ -826,10 +830,10 @@ body {
     }
 
     /* Navigation Links Updated for Requested Items */
-    .nav-links li:nth-child(1) a { content: "Store"; } /* Updated from "Store" */
-    .nav-links li:nth-child(2) a { content: "About"; } /* Updated from "About" */
-    .nav-links li:nth-child(3) a { content: "Service"; } /* New: Service */
-    .nav-links li:nth-child(4) a { content: "Contacts"; } /* Updated from "Contact" */
+    .nav-links li:nth-child(1) a { content: "Store"; }
+    .nav-links li:nth-child(2) a { content: "About"; }
+    .nav-links li:nth-child(3) a { content: "Service"; }
+    .nav-links li:nth-child(4) a { content: "Contacts"; }
 
     /* Search Pop-up and Cart Icon */
     .nav-right {
@@ -851,6 +855,8 @@ body {
         cursor: pointer;
         padding: 8px;
         transition: transform 0.3s ease, color 0.3s ease;
+        outline: none; /* Remove outline for touch devices */
+        -webkit-tap-highlight-color: transparent; /* Improve touch feedback */
     }
 
     .search-icon:hover, .cart-icon:hover {
@@ -915,51 +921,15 @@ body {
         font-size: 20px;
         cursor: pointer;
         transition: color 0.3s ease;
+        outline: none; /* Remove outline for touch devices */
+        -webkit-tap-highlight-color: transparent; /* Improve touch feedback */
     }
 
     .search-popup-close:hover {
         color: #F5F5DC;
     }
 
-    /* JavaScript for Search Pop-up and Hamburger */
-    /* Add this script at the end of script.js or in a new script tag in index.html */
-    /* script.js or new script tag:
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.createElement('button');
-        hamburger.classList.add('hamburger');
-        document.querySelector('.navbar').insertBefore(hamburger, document.querySelector('.nav-links'));
-
-        const searchIcon = document.querySelector('.search-icon');
-        const cartIcon = document.querySelector('.cart-icon');
-        const searchPopup = document.createElement('div');
-        searchPopup.classList.add('search-popup');
-        searchPopup.innerHTML = `
-            <input type="text" placeholder="Search" class="search-bar">
-            <button class="search-popup-close">✕</button>
-        `;
-        document.body.appendChild(searchPopup);
-
-        hamburger.addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-            hamburger.classList.toggle('open');
-        });
-
-        searchIcon.addEventListener('click', () => {
-            searchPopup.classList.toggle('active');
-        });
-
-        document.querySelector('.search-popup-close').addEventListener('click', () => {
-            searchPopup.classList.remove('active');
-        });
-
-        // Cart icon click (navigate to cart.html or show cart popup if desired)
-        cartIcon.addEventListener('click', () => {
-            window.location.href = 'cart.html'; // Or implement a pop-up
-        });
-    });
-    */
-
-    /* Footer (Compact Accordion Style with Updated Sections) */
+    /* Footer (Compact Accordion Style with Gradient Only) */
     .footer-content {
         flex-direction: column;
         padding: 15px;
@@ -972,9 +942,7 @@ body {
         width: 100%;
         margin: 10px 0;
         padding: 15px;
-        background: rgba(255, 255, 255, 0.1);
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
@@ -1003,6 +971,8 @@ body {
         color: #fff;
         margin: 5px 0;
         text-align: center;
+        outline: none; /* Remove outline for touch devices */
+        -webkit-tap-highlight-color: transparent; /* Improve touch feedback */
     }
 
     .footer-toggle::after {
@@ -1033,10 +1003,10 @@ body {
         gap: 10px;
     }
 
-    .link-column:nth-child(1) h4 { content: "Gift Center"; } /* Updated from "Gift Center" */
-    .link-column:nth-child(2) h4 { content: "Service"; } /* New: Service (replacing FAQ) */
-    .link-column:nth-child(3) h4 { content: "Contacts"; } /* New: Contacts (combining Terms and Privacy) */
-    .link-column:nth-child(4) h4 { content: "Buying Guides"; } /* Updated from "Buying Guides" */
+    .link-column:nth-child(1) h4 { content: "Gift Center"; }
+    .link-column:nth-child(2) h4 { content: "Service"; }
+    .link-column:nth-child(3) h4 { content: "Contacts"; }
+    .link-column:nth-child(4) h4 { content: "Buying Guides"; }
     .link-column:nth-child(5) { display: none; } /* Hide extra column if present */
 
     /* Social Links (Icons Only) */

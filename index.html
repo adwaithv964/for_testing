@@ -154,62 +154,91 @@
             </div>
         </div>
     </footer>
+
     <script>document.addEventListener('DOMContentLoaded', () => {
-        // Hamburger Menu Toggle
-        const hamburger = document.createElement('button');
-        hamburger.classList.add('hamburger');
-        document.querySelector('.navbar').insertBefore(hamburger, document.querySelector('.nav-links'));
-    
-        hamburger.addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-            hamburger.classList.toggle('open');
+    // Hamburger Menu Toggle
+    const hamburger = document.createElement('button');
+    hamburger.classList.add('hamburger');
+    document.querySelector('.navbar').insertBefore(hamburger, document.querySelector('.nav-links'));
+
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('.nav-links').classList.toggle('active');
+        hamburger.classList.toggle('open');
+    });
+
+    hamburger.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+    });
+
+    // Search Pop-up
+    const searchIcon = document.querySelector('.search-icon');
+    const cartIcon = document.querySelector('.cart-icon');
+    const searchPopup = document.createElement('div');
+    searchPopup.classList.add('search-popup');
+    searchPopup.innerHTML = `
+        <input type="text" placeholder="Search" class="search-bar">
+        <button class="search-popup-close">✕</button>
+    `;
+    document.body.appendChild(searchPopup);
+
+    // Add event listeners after searchPopup is added to DOM
+    searchIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        searchPopup.classList.toggle('active');
+    });
+
+    searchIcon.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+    });
+
+    // Add event listener for search-popup-close after creating the element
+    const searchPopupClose = searchPopup.querySelector('.search-popup-close');
+    searchPopupClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        searchPopup.classList.remove('active');
+    });
+
+    searchPopupClose.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+    });
+
+    // Cart Icon Click (Navigate to cart.html)
+    cartIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'cart.html';
+    });
+
+    cartIcon.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+    });
+
+    // Footer Accordion Toggle
+    const footerToggles = document.querySelectorAll('.footer-toggle');
+    footerToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = toggle.parentElement;
+            section.classList.toggle('active');
+            toggle.classList.toggle('active');
         });
-    
-        // Search Pop-up
-        const searchIcon = document.querySelector('.search-icon');
-        const cartIcon = document.querySelector('.cart-icon');
-        const searchPopup = document.createElement('div');
-        searchPopup.classList.add('search-popup');
-        searchPopup.innerHTML = `
-            <input type="text" placeholder="Search" class="search-bar">
-            <button class="search-popup-close">✕</button>
-        `;
-        document.body.appendChild(searchPopup);
-    
-        searchIcon.addEventListener('click', () => {
-            searchPopup.classList.toggle('active');
+
+        toggle.addEventListener('touchstart', (e) => {
+            e.preventDefault();
         });
-    
-        document.querySelector('.search-popup-close').addEventListener('click', () => {
-            searchPopup.classList.remove('active');
-        });
-    
-        // Cart Icon Click (Navigate to cart.html)
-        cartIcon.addEventListener('click', () => {
-            window.location.href = 'cart.html';
-        });
-    
-        // Footer Accordion Toggle
-        const footerToggles = document.querySelectorAll('.footer-toggle');
-        footerToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const section = toggle.parentElement;
-                section.classList.toggle('active');
-                toggle.classList.toggle('active');
-            });
-        });
-    
-        // Add footer-toggle class to each section's header
-        const footerSections = document.querySelectorAll('.about-section, .footer-links, .social-links');
-        footerSections.forEach(section => {
-            const header = section.querySelector('h3, h4') || section.querySelector('a');
-            if (header) {
-                const toggle = document.createElement('div');
-                toggle.classList.add('footer-toggle');
-                header.insertAdjacentElement('afterend', toggle);
-            }
-        });
-    });</script>
+    });
+
+    // Add footer-toggle class to each section's header
+    const footerSections = document.querySelectorAll('.about-section, .footer-links, .social-links');
+    footerSections.forEach(section => {
+        const header = section.querySelector('h3, h4') || section.querySelector('a');
+        if (header) {
+            const toggle = document.createElement('div');
+            toggle.classList.add('footer-toggle');
+            header.insertAdjacentElement('afterend', toggle);
+        }
+    });
+});</script>
     <script src="script.js"></script>
     <button class="back-to-top">↑</button> <!-- Add Back to Top button -->
 </body>
